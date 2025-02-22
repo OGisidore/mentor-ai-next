@@ -12,7 +12,6 @@ export default async function SubLayout({ params, children }: { params: Promise<
   
         <Providers locale={locale}>
            <div className="">
-          <Header />
           {children}
         </div>
         </Providers>
