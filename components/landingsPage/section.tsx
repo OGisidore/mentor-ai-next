@@ -8,10 +8,10 @@ export const SectionFirst = () => {
     const sectionT = useScopedI18n("landngPage.sectionFirst")
 
     return (
-        <section id="features" className="py-12 sm:py-16 bg-white px-4 sm:px-6 lg:px-8">
+        <section id="features" className="py-12 sm:py-16 bg-[var(--bg-color)] px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <span className="text-green-500 font-semibold">{sectionT("see_it_in_action")}</span>
+                    <span className="*:text-[var(--accent-color)] font-semibold">{sectionT("see_it_in_action")}</span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mt-2">{sectionT("watch_how_it_works")}</h2>
                     <div className="mt-8 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
                         <div className="aspect-w-16 aspect-h-9">
