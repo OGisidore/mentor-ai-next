@@ -143,7 +143,7 @@ export const Header = () => {
                     {/* <!-- Navigation - Desktop --> */}
                     <nav className="hidden md:flex items-center space-x-6">
                         <Link href="#features" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">Features</Link>
-                        <Link href="pages/vision.html" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">Our Vision</Link>
+                        <Link href="/vision" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">Our Vision</Link>
                         <Link href="https://github.com/prashantsingh2408/mentor-ai" target="_blank" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">
                             <FontAwesomeIcon icon={faGithub} className='mr-1' /> GitHub
                         </Link>
@@ -169,7 +169,7 @@ export const Header = () => {
 
 
                         </div>
-                        <Link href="agent/agent.html" className="px-4 py-2 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
+                        <Link href="/agents" className="px-4 py-2 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
                             Start Learning
                         </Link>
                         <LocalSelect />
@@ -184,12 +184,12 @@ export const Header = () => {
             <div id="mobileMenu" ref={mobileMenuRef} className="hidden md:hidden bg-[var(--bg-color)] border-t border-[var(--border-color)]">
                 <div className="px-4 py-3 space-y-4">
                     <Link href="#features" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Features</Link>
-                    <Link href="pages/vision.html" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Our Vision</Link>
+                    <Link href="/vision" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Our Vision</Link>
                     <Link href="#team" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Join Team</Link>
                     <Link href="https://github.com/yourusername/devai" target="_blank" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">
                         <FontAwesomeIcon icon={faGithub} className='mr-1' /> GitHub
                     </Link>
-                    <Link href="agent/agent.html" className="w-full text-left px-4 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
+                    <Link href="/agents." className="w-full text-left px-4 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
                         Start Learning
                     </Link>
 

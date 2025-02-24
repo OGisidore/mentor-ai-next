@@ -1,111 +1,119 @@
 "use client"
 
+import { useScopedI18n } from "@/locales/client";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faBrain, faGlobe, faTools, faMobileAlt, faUser, faChartLine, faMagic, faVideo, faMicrophone, faBook, faRoute, faPuzzlePiece, faBullseye, faClipboardCheck, faTasks, faComments, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 // 
-const futureScope = {
-    title: "Future Development Scope",
-    subTitle: "Exciting features and improvements on our roadmap",
-    description: "Explore the exciting developments we have planned for the future.",
-    features: [
-        {
-            icon: faBrain,
-            title: "Enhanced AI Models",
-            description: "Integration of more advanced language models and specialized domain expertise",
-        },
-        {
-            icon: faGlobe,
-            title: "Global Language Support",
-            description: "Expanding to support more languages and regional learning styles",
-        },
-        {
-            icon: faTools,
-            title: "Advanced Learning Tools",
-            description: "New interactive exercises, quizzes, and practical assignments",
-        },
-        {
-            icon: faMobileAlt,
-            title: "Mobile Application",
-            description: "Native mobile apps for iOS and Android with offline learning capabilities",
-        },
-        {
-            icon: faUser,
-            title: "Community Learning",
-            description: "Peer-to-peer learning, discussion forums, and collaborative projects",
-        },
-        {
-            icon: faChartLine,
-            title: "Advanced Analytics",
-            description: "Detailed progress tracking, performance metrics, and personalized recommendations",
-        },
-        {
-            icon: faMagic,
-            title: "AI Content Generation",
-            description: "Automated creation of personalized learning materials",
-            lists: [
-                {
-                    icon: faVideo,
-                    text: "Educational video generation",
-                },
-                {
-                    icon: faMicrophone,
-                    text: "AI-powered podcast creation",
-                },
-                {
-                    icon: faBook,
-                    text: "Interactive learning materials",
-                },
-            ],
-        },
-        {
-            icon: faRoute,
-            title: "Smart Learning Paths",
-            description: "AI-driven customized learning journeys",
-            lists: [
-                {
-                    icon: faChartLine,
-                    text: "Progress-based recommendations",
-                },
-                {
-                    icon: faPuzzlePiece,
-                    text: "Adaptive learning modules",
-                },
-                {
-                    icon: faBullseye,
-                    text: "Goal-oriented curriculum",
-                },
-            ],
-        },
-        {
-            icon: faClipboardCheck,
-            title: "Smart Assessment",
-            description: "Continuous evaluation and feedback system",
-            lists: [
-                {
-                    icon: faTasks,
-                    text: "Dynamic skill assessment",
-                },
-                {
-                    icon: faComments,
-                    text: "Real-time feedback",
-                },
-                {
-                    icon: faGraduationCap,
-                    text: "Performance analytics",
-                },
-            ],
-        },
-    ],
-};
+
 export const FutureScope = () => {
+    const t = useScopedI18n("landngPage.FutureScopeSection")
+
+    const futureScope = {
+        title: t("futureScope.title"),
+        subTitle: t("futureScope.subTitle"),
+        description: t("futureScope.description"),
+        features: [
+            {
+                icon: faBrain,
+                title: t("futureScope.features.0.title"),
+                description: t("futureScope.features.0.description"),
+            },
+            {
+                icon: faGlobe,
+                title: t("futureScope.features.1.title"),
+                description: t("futureScope.features.1.description"),
+            },
+            {
+                icon: faTools,
+                title: t("futureScope.features.2.title"),
+                description: t("futureScope.features.2.description"),
+            },
+            {
+                icon: faMobileAlt,
+                title: t("futureScope.features.3.title"),
+                description: t("futureScope.features.3.description"),
+            },
+            {
+                icon: faUser,
+                title: t("futureScope.features.4.title"),
+                description: t("futureScope.features.4.description"),
+            },
+            {
+                icon: faChartLine,
+                title: t("futureScope.features.5.title"),
+                description: t("futureScope.features.5.description"),
+            },
+            {
+                icon: faMagic,
+                title: t("futureScope.features.6.title"),
+                description: t("futureScope.features.6.description"),
+                lists: [
+                    {
+                        icon: faVideo,
+                        text: t("futureScope.features.6.lists.0.text"),
+                    },
+                    {
+                        icon: faMicrophone,
+                        text: t("futureScope.features.6.lists.1.text"),
+                    },
+                    {
+                        icon: faBook,
+                        text: t("futureScope.features.6.lists.2.text"),
+                    },
+                ],
+            },
+            {
+                icon: faRoute,
+                title: t("futureScope.features.7.title"),
+                description: t("futureScope.features.7.description"),
+                lists: [
+                    {
+                        icon: faVideo,
+                        text: t("futureScope.features.7.lists.0.text"),
+                    },
+                    {
+                        icon: faMicrophone,
+                        text: t("futureScope.features.7.lists.1.text"),
+                    },
+                    {
+                        icon: faBook,
+                        text: t("futureScope.features.7.lists.2.text"),
+                    },
+                ],
+            },
+            {
+                icon: faClipboardCheck,
+                title: t("futureScope.features.8.title"),
+                description: t("futureScope.features.8.description"),
+                lists: [
+                    {
+                        icon: faVideo,
+                        text: t("futureScope.features.8.lists.0.text"),
+                    },
+                    {
+                        icon: faMicrophone,
+                        text: t("futureScope.features.8.lists.1.text"),
+                    },
+                    {
+                        icon: faBook,
+                        text: t("futureScope.features.8.lists.2.text"),
+                    },
+                ],
+            },
+        ],
+        action : {
+            desciption :t("futureScope.action.desciption"),
+            btnText : t("futureScope.action.btnText")
+        }
+    };
     return (
         <section className="py-16 bg-[var(--bg-color)] px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12">
-                    <span className="text-[var(--accent-color)] font-semibold">What's Next</span>
+                    <span className="text-[var(--accent-color)] font-semibold">{futureScope.description}</span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-color)] mt-2">{futureScope.title}</h2>
                     <p className="mt-4 text-[var(--text-color)] opacity-80">{futureScope.subTitle}</p>
                 </div>
@@ -144,11 +152,11 @@ export const FutureScope = () => {
 
                 {/* <!-- Call to Action --> */}
                 <div className="mt-12 text-center">
-                    <p className="text-[var(--text-color)] opacity-80 mb-6">Want to contribute or suggest new features?</p>
+                    <p className="text-[var(--text-color)] opacity-80 mb-6">{futureScope.action.desciption}</p>
                     <Link href="https://github.com/prashantsingh2408/mentor-ai"
                         className="inline-flex items-center px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
                             <FontAwesomeIcon icon={faGithub}  className="mr-2"/>
-                        Join Our GitHub Community
+                            {futureScope.action.btnText}
                     </Link>
                 </div>
             </div>

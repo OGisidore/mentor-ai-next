@@ -1,7 +1,7 @@
 "use client"
 
 import { useScopedI18n } from "@/locales/client";
-import { faArrowRight, faBookReader, faBrain, faBriefcase, faBullseye, faChartLine, faCheck, faCheckCircle, faClipboardCheck, faComments, faGlobe, faGraduationCap, faHeartbeat, faLanguage, faLaptopCode, faMagic, faMicrophone, faMobileAlt, faPuzzlePiece, faRoute, faSchool, faSearch, faTasks, faTools, faUser, faUserCircle, faVideo } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBookReader, faBrain, faBriefcase, faBullseye, faChartLine, faCheck, faCheckCircle, faClipboardCheck, faComments, faDatabase, faGlobe, faGraduationCap, faHeartbeat, faLanguage, faLaptopCode, faMagic, faMicrophone, faMobileAlt, faPuzzlePiece, faRoute, faSchool, faSearch, faTasks, faTools, faUser, faUserCircle, faVideo } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
@@ -20,198 +20,195 @@ export const FeatureSection = () => {
 //   const mentors = t("mentors");
     // 
 const mentors = {
-    title: " Specialized Mentors",
-    subTitle: "Choose Your Mentor",
-    description: "Select from our diverse range of expert mentors",
+    title: t("mentors.title"),
+    subTitle: t("mentors.subTitle"),
+    description: t("mentors.description"),
     mentorsCards: [
         {
             icon: faLanguage,
-            title: "Language Mentor",
-            description: "Master new languages with personalized guidance and conversation practice",
+            title: t("mentors.mentorsCards.0.title"),
+            description:t("mentors.mentorsCards.0.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Real-time pronunciation feedback"
+                    text: t("mentors.mentorsCards.0.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Interactive conversation practice"
+                    text: t("mentors.mentorsCards.0.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Grammar and vocabulary building"
+                    text: t("mentors.mentorsCards.0.lists.2.text")
                 },
 
             ],
-            type : "language",
+            type : t("mentors.mentorsCards.0.type"),
 
 
 
         },
         {
             icon: faSchool,
-            title: "High School Mentor",
-            description: "Expert guidance for high school subjects and exam preparation",
-            type : "highschool",
+            title: t("mentors.mentorsCards.1.title"),
+            description:t("mentors.mentorsCards.1.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Subject-specific tutoring"
+                    text: t("mentors.mentorsCards.1.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Exam preparation strategies"
+                    text: t("mentors.mentorsCards.1.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Homework assistance"
+                    text: t("mentors.mentorsCards.1.lists.2.text")
                 },
 
             ],
+            type : t("mentors.mentorsCards.1.type"),
 
 
 
         },
         {
             icon: faBriefcase,
-            title: "Career Transition Mentor",
-            description: "Expert guidance for career changes and professional developmen",
-            type : "career-transition",
+            title: t("mentors.mentorsCards.2.title"),
+            description:t("mentors.mentorsCards.2.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Resume and interview preparation"
+                    text: t("mentors.mentorsCards.2.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Skill gap analysis and learning paths"
+                    text: t("mentors.mentorsCards.2.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Industry-specific guidance"
+                    text: t("mentors.mentorsCards.2.lists.2.text")
                 },
 
             ],
-
+            type : t("mentors.mentorsCards.2.type"),
 
 
         },
         {
             icon: faBookReader,
-            title: "Intermediate Mentor",
-            description: "Specialized support for intermediate level students and subjects",
-            type : "intermediate",
+            title: t("mentors.mentorsCards.3.title"),
+            description:t("mentors.mentorsCards.3.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Advanced concept explanations"
+                    text: t("mentors.mentorsCards.3.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Practice problem solving"
+                    text: t("mentors.mentorsCards.3.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Exam preparation techniques"
+                    text: t("mentors.mentorsCards.3.lists.2.text")
                 },
 
             ],
-
+            type : t("mentors.mentorsCards.3.type"),
 
 
         },
         {
             icon: faGraduationCap,
-            title: "College Mentor",
-            description: "Advanced academic guidance for college students and research",
-            type : "college",
+            title: t("mentors.mentorsCards.4.title"),
+            description:t("mentors.mentorsCards.4.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Research methodology guidance"
+                    text: t("mentors.mentorsCards.4.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Thesis development support"
+                    text: t("mentors.mentorsCards.4.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Academic writing assistance"
+                    text: t("mentors.mentorsCards.4.lists.2.text")
                 },
 
             ],
+            type : t("mentors.mentorsCards.4.type"),
 
 
 
         },
         {
             icon: faClipboardCheck,
-            title: "Government Exam Mentor",
-            type : "government-exam",
-            description: "Specialized preparation for government exams and competitive tests",
+            title: t("mentors.mentorsCards.5.title"),
+            description:t("mentors.mentorsCards.5.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Exam pattern analysis"
+                    text: t("mentors.mentorsCards.5.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Mock test preparation"
+                    text: t("mentors.mentorsCards.5.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Current affairs updates"
+                    text: t("mentors.mentorsCards.5.lists.2.text")
                 },
 
             ],
+            type : t("mentors.mentorsCards.5.type"),
 
 
 
         },
         {
             icon: faHeartbeat,
-            title: "Fitness & Nutrition Mentor",
-            type : "fitness-nutrition",
-            description: "Personalized guidance for health, fitness, and nutrition planning",
+            title: t("mentors.mentorsCards.6.title"),
+            description:t("mentors.mentorsCards.6.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Customized workout plans"
+                    text: t("mentors.mentorsCards.6.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Nutrition advice and meal planning"
+                    text: t("mentors.mentorsCards.6.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Progress tracking and adjustments"
+                    text: t("mentors.mentorsCards.6.lists.2.text")
                 },
 
             ],
-
+            type : t("mentors.mentorsCards.6.type"),
 
 
         },
         {
             icon: faLaptopCode,
-            title: "Tech Interview Mentor",
-            type : "tech-interview",
-            description: "Comprehensive preparation for technical interviews at top tech companies",
+            title: t("mentors.mentorsCards.7.title"),
+            description:t("mentors.mentorsCards.7.description"),
             lists: [
                 {
                     icon: faCheck,
-                    text: "Data Structures & Algorithms practice"
+                    text: t("mentors.mentorsCards.7.lists.0.text")
                 },
                 {
                     icon: faCheck,
-                    text: "System Design discussions"
+                    text: t("mentors.mentorsCards.7.lists.1.text")
                 },
                 {
                     icon: faCheck,
-                    text: "Mock interviews & feedback"
+                    text: t("mentors.mentorsCards.7.lists.2.text")
                 },
 
             ],
+            type : t("mentors.mentorsCards.7.type"),
 
 
 
@@ -219,31 +216,31 @@ const mentors = {
     ],
     action: {
         icon: faArrowRight,
-        text: " Start Learning"
+        text: t("mentors.action.text")
     }
 }
 
 // 
 const keyCapabilities = {
-    title: "Key Capabilities",
+    title: t("keyCapabilities.title"),
     // description: "Enhance your learning experience with these powerful features",
     capabilities: [
         {
             icon: faCheckCircle,
-            title: "Real-Time Pronunciation Feedback",
-            description: "Instant correction and examples for mispronounced words with audio demonstrations",
+            title: t("keyCapabilities.capabilities.0.title"),
+            description:t("keyCapabilities.capabilities.0.description"),
 
         },
         {
             icon: faBrain,
-            title: "Context Awareness",
-            description: "Adapts to your learning style and remembers previous interactions for personalized learning",
+            title: t("keyCapabilities.capabilities.1.title"),
+            description:t("keyCapabilities.capabilities.1.description"),
 
         },
         {
             icon: faSearch,
-            title: "Web Search Integration",
-            description: "Access real-time information and resources from the web to enhance learning experience",
+            title: t("keyCapabilities.capabilities.2.title"),
+            description:t("keyCapabilities.capabilities.2.description"),
 
         },
     ],
@@ -288,7 +285,6 @@ const coreFeatures = {
                                     <h3 className="text-xl font-semibold text-[var(--text-color)] mb-3">
                                         <FontAwesomeIcon icon={feat.icon} className="mr-2 text-[var(--accent-color)]" /> {feat.title}
                                         {/* <i className="fas fa-comments mr-2 text-[var(--accent-color)]"></i> */}
-                                        Chat Mode
                                     </h3>
                                     <p className="text-[var(--text-color)] opacity-80">
                                         {feat.description}
@@ -327,11 +323,12 @@ const coreFeatures = {
                 {/* <!-- Persistent Memory --> */}
                 <div className="bg-[var(--bg-color)] mt-4 p-6 rounded-lg shadow-md border border-[var(--border-color)]">
                     <h3 className="text-xl font-semibold text-[var(--text-color)] mb-3">
-                        <i className="fas fa-database mr-2 text-[var(--accent-color)]"></i>
-                        Persistent Memory
+                        <FontAwesomeIcon icon={faDatabase} className="mr-2 text-[var(--accent-color)]"/>
+                        {/* <i className="fas fa-database mr-2 text-[var(--accent-color)]"></i> */}
+                        {t("persistentMemory.title")}
                     </h3>
                     <p className="text-[var(--text-color)] opacity-80">
-                        Store and recall user data persistently to provide a more personalized learning experience
+                    {t("persistentMemory.description")}
                     </p>
                 </div>
 
