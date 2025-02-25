@@ -3,8 +3,6 @@ import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header/header';
 
 import './page.css';
-import { SectionFirst } from '@/components/landingsPage/section';
-import Hero from '@/components/visionComponents/hero';
 import { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowUp, faChartLine, faCheck, faCode, faCodeBranch, faFlag, faGlobe, faGraduationCap, faPlay, faProjectDiagram, faRobot, faSearchPlus, faUser, } from '@fortawesome/free-solid-svg-icons';
@@ -93,13 +91,13 @@ const Home: React.FC = () => {
           {t("hero.descriptionParagraph")}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/agents" className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
+            <Link href="/agents" className="w-full no-underline sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)]  text-white font-semibold rounded-lg transition duration-300">
               <FontAwesomeIcon icon={faPlay} className='mr-2' />
               {/* <i className="fas fa-play mr-2"></i> */}
               {t("hero.start_linkText")}
             </Link>
             <Link href="https://github.com/prashantsingh2408/mentor-ai"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300">
+              className="w-full no-underline  sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300">
               <FontAwesomeIcon icon={faGithub} className='mr-2' />
               {t("hero.github_linkText")}
               {/* <i className="fab fa-github mr-2"></i> */}
@@ -179,7 +177,7 @@ const Home: React.FC = () => {
 
               <Link
                 href="/architecture"
-                className="inline-flex items-center mt-8 px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300"
+                className="inline-flex no-underline   items-center mt-8 px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300"
               >
                 <FontAwesomeIcon icon={faProjectDiagram} className='mr-2' />
                 {t("hackathon.implementation.viewTechnical")}
@@ -247,7 +245,7 @@ const Home: React.FC = () => {
             <Link
               href="https://lablab.ai/event/generative-ai-hackathon-with-ibm-granite"
               target="_blank"
-              className="inline-flex items-center px-8 mt-4 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-medium rounded-lg transition duration-300"
+              className="inline-flex no-underline  items-center px-8 mt-4 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-medium rounded-lg transition duration-300"
             >
               <FontAwesomeIcon icon={faCodeBranch} className='mr-2' />
               {t("hackathon.callToAction.join")}
@@ -271,14 +269,14 @@ const Home: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
             <Link
               href="https://github.com/prashantsingh2408/mentor-ai"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300"
+              className="w-full sm:w-auto inline-flex items-center no-underline  justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300"
             >
               <FontAwesomeIcon icon={faGithub} className='mr-2' />
               {t("github.repo1")}
             </Link>
             <Link
               href="https://github.com/prashantsingh2408/mentor-ai-avatar-front-end"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300"
+              className="w-full no-underline  sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300"
             >
               <FontAwesomeIcon icon={faGithub} className='mr-2' />
               {t("github.repo2")}
@@ -286,7 +284,7 @@ const Home: React.FC = () => {
             </Link>
             <Link
               href="https://github.com/prashantsingh2408/mentor-ai-avatar-back-end"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300"
+              className="w-full no-underline  sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300"
             >
               <FontAwesomeIcon icon={faGithub} className='mr-2' />
               {t("github.repo3")}

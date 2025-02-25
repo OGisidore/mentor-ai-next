@@ -363,7 +363,7 @@ const coreFeatures = {
                                                 })
                                             }
                                         </ul>
-                                        <Link href={"/mentor?type="+ mentor.type} className="inline-flex items-center text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> {mentors.action.text} <FontAwesomeIcon icon={mentors.action.icon} className="ml-2 " />  </Link>
+                                        <Link href={"/mentor?type="+ mentor.type} className="inline-flex no-underline items-center text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> {mentors.action.text} <FontAwesomeIcon icon={mentors.action.icon} className="ml-2 " />  </Link>
                                         {/* <a href="#"
                                             onClick="openMentor('language')"
                                             class="inline-flex items-center text-[var(--accent-color)] hover:text-[var(--accent-dark)]">

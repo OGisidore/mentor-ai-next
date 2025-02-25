@@ -131,7 +131,7 @@ export const Header = () => {
                     <div className="flex items-center">
                         <FontAwesomeIcon icon={faLanguage} className='text-primary-600 text-2xl sm:text-4xl mr-2' />
                         {/* <i className="fas fa-language text-primary-600 text-2xl sm:text-4xl mr-2"></i> */}
-                        <Link href={"/"} className="text-lg sm:text-2xl font-bold text-gray-800">Language Mentor AI</Link>
+                        <Link href={"/"} className="text-lg no-underline sm:text-2xl font-bold text-gray-800">Language Mentor AI</Link>
                     </div>
 
                     {/* <!-- Mobile menu button --> */}
@@ -142,9 +142,9 @@ export const Header = () => {
 
                     {/* <!-- Navigation - Desktop --> */}
                     <nav className="hidden md:flex items-center space-x-6">
-                        <Link href="#features" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">Features</Link>
-                        <Link href="/vision" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">Our Vision</Link>
-                        <Link href="https://github.com/prashantsingh2408/mentor-ai" target="_blank" className="text-[var(--text-color)] hover:text-[var(--accent-color)] transition-colors">
+                        <Link href="#features" className="text-[var(--text-color)] no-underline  hover:text-[var(--accent-color)] transition-colors">Features</Link>
+                        <Link href="/vision" className="text-[var(--text-color)] no-underline  hover:text-[var(--accent-color)] transition-colors">Our Vision</Link>
+                        <Link href="https://github.com/prashantsingh2408/mentor-ai" target="_blank" className="text-[var(--text-color)] no-underline hover:text-[var(--accent-color)] transition-colors">
                             <FontAwesomeIcon icon={faGithub} className='mr-1' /> GitHub
                         </Link>
 
@@ -161,7 +161,7 @@ export const Header = () => {
                                             // onclick="applyTheme('dark')"
                                             title={btn.name + " Theme"}>
                                             <FontAwesomeIcon icon={btn.icon} className=" text-xl text-[var(--text-color)]" />
-                                            <i className="fas fa-moon text-xl text-[var(--text-color)]"></i>
+                                            {/* <i className="fas fa-moon text-xl text-[var(--text-color)]"></i> */}
                                         </button>
                                     )
                                 })
@@ -169,7 +169,7 @@ export const Header = () => {
 
 
                         </div>
-                        <Link href="/agents" className="px-4 py-2 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
+                        <Link href="/agents" className="px-4 py-2 no-underline bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
                             Start Learning
                         </Link>
                         <LocalSelect />
@@ -183,13 +183,13 @@ export const Header = () => {
             {/* <!-- Mobile Navigation Menu --> */}
             <div id="mobileMenu" ref={mobileMenuRef} className="hidden md:hidden bg-[var(--bg-color)] border-t border-[var(--border-color)]">
                 <div className="px-4 py-3 space-y-4">
-                    <Link href="#features" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Features</Link>
-                    <Link href="/vision" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Our Vision</Link>
-                    <Link href="#team" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Join Team</Link>
-                    <Link href="https://github.com/yourusername/devai" target="_blank" className="block text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">
+                    <Link href="#features" className="block no-underline text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Features</Link>
+                    <Link href="/vision" className="block no-underline text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Our Vision</Link>
+                    <Link href="#team" className="block no-underline text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">Join Team</Link>
+                    <Link href="https://github.com/yourusername/devai" target="_blank" className="block no-underline text-[var(--text-color)] hover:text-[var(--accent-color)] py-2">
                         <FontAwesomeIcon icon={faGithub} className='mr-1' /> GitHub
                     </Link>
-                    <Link href="/agents." className="w-full text-left px-4 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
+                    <Link href="/agents." className="w-full no-underline  text-left px-4 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
                         Start Learning
                     </Link>
 
@@ -207,7 +207,7 @@ export const Header = () => {
                                         // onclick="applyTheme('dark')"
                                         title={btn.name + " Theme"}>
                                         <FontAwesomeIcon icon={btn.icon} className=" text-xl text-[var(--text-color)]" />
-                                        <i className="fas fa-moon text-xl text-[var(--text-color)]"></i>
+                                        {/* <i className="fas fa-moon text-xl text-[var(--text-color)]"></i> */}
                                     </button>
                                 )
                             })

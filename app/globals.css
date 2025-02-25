@@ -73,24 +73,14 @@ body {
 
 }
 
-.fa {
-  font-size: 16px; /* Taille par défaut */
-  opacity: 0;
-  visibility: hidden; /* Masquer les icônes initialement */
-  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+
+
+
+
+
+.no-underline:hover {
+  text-decoration: none;
 }
-
-/* Après le chargement de la page, rendre les icônes visibles */
-.page-loaded .fa {
-  opacity: 1;
-  visibility: visible;
-  font-size: 24px; /* Taille des icônes après chargement */
-  transition: opacity 0.3s ease-in-out, visibility 0s 0s;
-}
-
-
-
-
 
 
 /* /* Dans votre fichier CSS global ou module */

@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { CustomIcon } from "@/components/custumcon/icon";
 import { useScopedI18n } from "@/locales/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -44,7 +43,7 @@ export const Footer = () => {
                     <div className="flex items-center">
                         <FontAwesomeIcon icon={faLanguage} className='text-[var(--accent-light)] text-2xl mr-3' />
                         {/* <i className="fas fa-language text-primary-600 text-2xl sm:text-4xl mr-2"></i> */}
-                        <Link href={"/"} >Language Mentor AI</Link>
+                        <Link className="no-underline " href={"/"} >Language Mentor AI</Link>
                     </div>
                         <p className="text-gray-400">Empowering language learning through AI-powered conversations.</p>
                     </div>
@@ -54,7 +53,7 @@ export const Footer = () => {
                             <ul className="space-y-2">
                                 {data.links.map((current_link, index) => (
                                     <li key={index}>
-                                        <Link href={current_link.link} className="text-gray-400 hover:text-[var(--accent-light)] transition duration-300">
+                                        <Link href={current_link.link} className="text-gray-400 no-underline hover:text-[var(--accent-light)] transition duration-300">
                                             {current_link.linkName}
                                         </Link>
                                     </li>
@@ -67,7 +66,7 @@ export const Footer = () => {
                         <h3 className="font-semibold text-lg mb-4 text-white">{footerT("connect_with_us")}</h3>
                         <div className="flex space-x-4">
                             {social_medias.map((social, index) => (
-                                <Link key={index} href={social.link} className="text-gray-400 hover:text-[var(--accent-light)] transition duration-300">
+                                <Link key={index} href={social.link} className="text-gray-400 no-underline  hover:text-[var(--accent-light)] transition duration-300">
                                     <FontAwesomeIcon icon={social.icon} className="text-xl" />
                                 </Link>
                             ))}

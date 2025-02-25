@@ -154,7 +154,7 @@ export const FutureScope = () => {
                 <div className="mt-12 text-center">
                     <p className="text-[var(--text-color)] opacity-80 mb-6">{futureScope.action.desciption}</p>
                     <Link href="https://github.com/prashantsingh2408/mentor-ai"
-                        className="inline-flex items-center px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
+                        className="inline-flex items-center no-underline px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
                             <FontAwesomeIcon icon={faGithub}  className="mr-2"/>
                             {futureScope.action.btnText}
                     </Link>
