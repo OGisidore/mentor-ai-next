@@ -122,15 +122,18 @@ export default function Agent() {
         // Ajout du message utilisateur
         setMessages((prev) => [...prev, { type: "user", content: message }]);
         // this.addMessageToChat(message, true);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         this.messageInput.value = "";
 
         // Récupère la réponse de l'IA
         const response = await this.getAIResponse(message);
         setMessages((prev) => [...prev, { type: "bot", content: response }]);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         // this.addMessageToChat(response, false);
       } catch (error) {
         console.error("Error sending message:", error);
         setMessages((prev) => [...prev, { type: "bot", content: "Sorry, there was an error processing your message." }]);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         // this.addMessageToChat(
         //   "Sorry, there was an error processing your message.",
         //   false
@@ -340,7 +343,12 @@ Be friendly and helpful.`,
     const transcript = event.results[event.results.length - 1][0].transcript.trim();
     console.log("Speech recognized:", transcript);
     if (transcript) {
-      displayMessage("user", transcript);
+      setMessages((prev) => [...prev, { type: "user", content: transcript }]);
+      if (chatMessagesRef.current) {
+        chatMessagesRef.current.scrollTop =
+       chatMessagesRef.current.scrollHeight;
+     }
+      // displayMessage("user", transcript);
       if (transcript.toLowerCase() === "stop") {
         stopListening();
         return;
@@ -349,7 +357,13 @@ Be friendly and helpful.`,
         await streamFromOpenAI(transcript);
       } catch (error) {
         console.error("OpenAI API Error:", error);
-        displayMessage("assistant", "⚠ AI is currently unavailable. Please try again later.");
+        setMessages((prev) => [...prev, { type: "bot", content: "AI is currently unavailable. Please try again later." }]);
+        if (chatMessagesRef.current) {
+           chatMessagesRef.current.scrollTop =
+          chatMessagesRef.current.scrollHeight;
+        }
+       
+        // displayMessage("assistant", "⚠ AI is currently unavailable. Please try again later.");
       }
     }
   }
@@ -435,7 +449,14 @@ Be friendly and helpful.`,
       }
     } catch (error) {
       console.error("Streaming Error:", error);
-      displayMessage("assistant", "⚠ Error in AI response. Please try again.");
+      setMessages((prev) => [...prev, { type: "bot", content: "⚠ Error in AI response. Please try again." }]);
+      if (chatMessagesRef.current) {
+        chatMessagesRef.current.scrollTop =
+       chatMessagesRef.current.scrollHeight;
+     }
+    
+
+      // displayMessage("assistant", "⚠ Error in AI response. Please try again.");
     }
   }
 
@@ -638,7 +659,22 @@ Be friendly and helpful.`,
             </div>
             {messages.map((msg, index) =>
               msg.type === "user" ? (
-                <UserMessage key={index} message={msg.content} />
+                <div key={index} className="flex w-full justify-end items-start max-w-3xl ml-auto">
+                  <div className="mr-3 bg-primary-100 rounded-lg p-4">
+                    <p className="text-gray-800">
+                      {msg.content}
+                    </p>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <div
+                      className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center"
+                    >
+                      <FontAwesomeIcon icon={faUser} className="text-gray-600" />
+                      {/* <User className="text-gray-600" /> */}
+                    </div>
+                  </div>
+                </div>
+                // <UserMessage key={index} message={msg.content} />
               ) : (
                 <BotMessage key={index} message={msg.content} />
               )
@@ -675,7 +711,7 @@ Be friendly and helpful.`,
                     </div>
                   </div>
                   <Link
-                  href={"https://mentor-ai-avatar-front-end.vercel.app/"}
+                    href={"https://mentor-ai-avatar-front-end.vercel.app/"}
                     className="p-2 text-gray-400 hover:text-gray-600"
                   >
                     <FontAwesomeIcon icon={faUserCircle} />
