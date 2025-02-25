@@ -1,6 +1,8 @@
 import useColorMode from "@/hooks/useColorMode";
 import { useEffect, useState } from "react";
 import { CustomIcon } from "../custumcon/icon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLeaf, faMoon, faWater } from "@fortawesome/free-solid-svg-icons";
 
 const DarkModeSwitcher = () => {
   const [, setColorMode] = useColorMode() as [string, (value: string) => void];
@@ -13,39 +15,42 @@ const DarkModeSwitcher = () => {
     setColorMode(savedMode);
   }, [setColorMode]);
 
-  const changeTheme = () => {
-    const newMode = currentMode === "light" ? "dark" : "light";
-    setColorMode(newMode);
-    setCurrentMode(newMode);
-    localStorage.setItem("colorMode", newMode);
+  const changeTheme = (colorMode: string) => {
+    setColorMode(colorMode);
+    setCurrentMode(colorMode);
+    localStorage.setItem("colorMode", colorMode);
   };
 
   return (
     <div>
-      <label className="relative m-0 block h-7 w-14 rounded-full bg-muted-foreground">
-        <input
-          type="checkbox"
-          onChange={changeTheme}
-          checked={currentMode === "dark"}
-          className="absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0"
-        />
-        <span
-          className={`absolute left-[3px] top-1/2 flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-muted shadow-sm duration-75 ease-linear ${
-            currentMode === "dark" && "!right-[3px] !translate-x-full"
-          }`}
-        >
-          <span className="dark:hidden">
-            {/* Light mode icon */}
-            <CustomIcon name="Sun" size={16} />
-          </span>
-          <span className="hidden dark:inline-block">
-            {/* Dark mode icon */}
-            <CustomIcon name="Dark" size={16} />
-          </span>
-        </span>
-      </label>
+      <div className="flex items-center space-x-3">
+        <button
+          className="theme-btn w-10 h-10 rounded-full border-tex transition-all duration-200 hover:scale-110 flex items-center justify-center bg-[var(--bg-color)] border-2 shadow-md"
+          data-theme="dark"
+          onClick={() => changeTheme('dark')}
+          title="Dark Theme">
+          <FontAwesomeIcon icon={faMoon} className=" text-xl text-[var(--text-color)]" />
+        </button>
+        <button
+          className="theme-btn w-10 h-10 rounded-full transition-all border-tex duration-200 hover:scale-110 flex items-center justify-center bg-[var(--bg-color)] border-2 shadow-md"
+          data-theme="green"
+          onClick={() => changeTheme('green')}
+          title="Green Theme">
+          <FontAwesomeIcon icon={faLeaf} className=" text-xl text-[var(--text-color)]" />
+        </button>
+        <button
+          className="theme-btn w-10 h-10 rounded-full border-text transition-all duration-200 hover:scale-110 flex items-center justify-center bg-[var(--bg-color)] border-2 shadow-md"
+          data-theme="blue"
+          onClick={() => changeTheme('blue')}
+          title="Blue Theme">
+          <FontAwesomeIcon icon={faWater} className=" text-xl text-[var(--text-color)]" />
+
+        </button>
+      </div>
+
     </div>
   );
 };
 
 export default DarkModeSwitcher;
+
