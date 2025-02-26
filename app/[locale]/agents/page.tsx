@@ -454,9 +454,6 @@ Be friendly and helpful.`,
         chatMessagesRef.current.scrollTop =
        chatMessagesRef.current.scrollHeight;
      }
-    
-
-      // displayMessage("assistant", "⚠ Error in AI response. Please try again.");
     }
   }
 
@@ -471,79 +468,9 @@ Be friendly and helpful.`,
     speechUtterance.current.onerror = (event) => {
       console.error("Speech synthesis error:", event);
     };
-    // window.speechSynthesis.cancel();
-    // speechUtterance.current.text = text;
-    // setIsSpeaking(true);
-    // window.speechSynthesis.speak(speechUtterance.current);
-    // speechUtterance.current.onend = () => {
-    //   setIsSpeaking(false);
-    //   console.log("Finished speaking");
-    // };
-    // speechUtterance.current.onerror = (event: any) => {
-    //   console.error("Speech synthesis error:", event);
-    //   setIsSpeaking(false);
-    // };
+  
   }
 
-  function displayMessage(role: string, text: string) {
-    if (chatMessagesRef.current) {
-      const messageDiv = document.createElement("div");
-      messageDiv.className = `flex items-start max-w-3xl ${role === "user" ? "ml-auto" : ""
-        }`;
-      const content =
-        role === "user"
-          ? `
-            <div class="mr-3 bg-primary-100 rounded-lg p-4">
-              <p class="text-gray-800">${text}</p>
-            </div>
-            <div class="flex-shrink-0">
-              <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <i class="fas fa-user text-gray-600"></i>
-              </div>
-            </div>
-          `
-          : `
-            <div class="flex-shrink-0">
-              <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
-                <i class="fas fa-language text-primary-600"></i>
-              </div>
-            </div>
-            <div class="ml-3 bg-gray-100 rounded-lg p-4">
-              <p class="text-gray-800">${text}</p>
-            </div>
-          `;
-      messageDiv.innerHTML = content;
-      chatMessagesRef.current.appendChild(messageDiv);
-      chatMessagesRef.current.scrollTop =
-        chatMessagesRef.current.scrollHeight;
-    }
-  }
-
-
-  // // Fonction pour basculer en mode avatar
-  // function toggleAvatarMode() {
-  //   const chatInput = document.querySelector(".chat-input");
-  //   const chatMessages = document.querySelector(".chat-messages");
-  //   const avatarView = document.getElementById("avatarView");
-  //   const avatarButton = document.getElementById("avatarButton");
-
-  //   if (avatarView?.classList.contains("hidden")) {
-  //     chatMessages?.classList.add("hidden");
-  //     chatInput?.classList.add("hidden");
-  //     avatarView?.classList.remove("hidden");
-  //     avatarButton?.classList.add("active");
-  //     if (isListening) {
-  //       stopListening();
-  //     }
-  //   } else {
-  //     chatMessages?.classList.remove("hidden");
-  //     chatInput?.classList.remove("hidden");
-  //     avatarView?.classList.add("hidden");
-  //     avatarButton?.classList.remove("active");
-  //   }
-  // }
-
-  // useEffect pour l'initialisation (remplace DOMContentLoaded)
   useEffect(() => {
     // Initialisation du ChatIntegration
     const chatIntegration = new ChatIntegration();
