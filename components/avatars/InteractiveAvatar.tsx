@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { StartAvatarResponse } from "@heygen/streaming-avatar";
 
 import StreamingAvatar, {
@@ -112,6 +113,8 @@ export default function InteractiveAvatar() {
       });
 
       setData(res);
+      console.log(data);
+      
       // default to voice mode
       await avatar.current?.startVoiceChat({
         useSilencePrompt: false
@@ -153,7 +156,7 @@ export default function InteractiveAvatar() {
     setStream(undefined);
   }
 
-  const handleChangeChatMode = useMemoizedFn(async (v: any) => {
+  const handleChangeChatMode = useMemoizedFn(async (v) => {
     if (v === chatMode) {
       return;
     }
@@ -251,7 +254,7 @@ export default function InteractiveAvatar() {
                 <Select
                   // placeholder="Or select one from these example avatars"
                   // size="md"
-                  onValueChange={(e : any) => {
+                  onValueChange={(e : any ) => {
                     setAvatarId(e.target.value);
                   }}
                   // onChang/e={}
@@ -309,7 +312,7 @@ export default function InteractiveAvatar() {
           <Tabs
             aria-label="Options"
             defaultValue={chatMode}
-            onChange={(v:any) => {
+            onChange={(v) => {
               handleChangeChatMode(v);
             }}
             // selectedKey={chatMode}

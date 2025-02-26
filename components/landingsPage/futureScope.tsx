@@ -2,7 +2,7 @@
 
 import { useScopedI18n } from "@/locales/client";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faBrain, faGlobe, faTools, faMobileAlt, faUser, faChartLine, faMagic, faVideo, faMicrophone, faBook, faRoute, faPuzzlePiece, faBullseye, faClipboardCheck, faTasks, faComments, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faBrain, faChartLine, faClipboardCheck, faGlobe, faMagic, faMicrophone, faMobileAlt, faRoute, faTools, faUser, faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
@@ -104,9 +104,9 @@ export const FutureScope = () => {
                 ],
             },
         ],
-        action : {
-            desciption :t("futureScope.action.desciption"),
-            btnText : t("futureScope.action.btnText")
+        action: {
+            desciption: t("futureScope.action.desciption"),
+            btnText: t("futureScope.action.btnText")
         }
     };
     return (
@@ -147,7 +147,7 @@ export const FutureScope = () => {
                             )
                         })
                     }
-                    
+
                 </div>
 
                 {/* <!-- Call to Action --> */}
@@ -155,8 +155,8 @@ export const FutureScope = () => {
                     <p className="text-[var(--text-color)] opacity-80 mb-6">{futureScope.action.desciption}</p>
                     <Link href="https://github.com/prashantsingh2408/mentor-ai"
                         className="inline-flex items-center no-underline px-6 py-3 bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
-                            <FontAwesomeIcon icon={faGithub}  className="mr-2"/>
-                            {futureScope.action.btnText}
+                        <FontAwesomeIcon icon={faGithub} className="mr-2" />
+                        {futureScope.action.btnText}
                     </Link>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faMoon, faLeaf, faWater, faGem, faLanguage, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const themeButtons = [
     {
@@ -28,7 +28,6 @@ const themeButtons = [
 
 ]
 export const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
     const headerT = useScopedI18n("header");
 
     const CONFIG = {
@@ -142,8 +141,8 @@ export const Header = () => {
 
                     {/* <!-- Navigation - Desktop --> */}
                     <nav className="hidden md:flex items-center space-x-6">
-                        <Link href="#features" className="text-[var(--text-color)] no-underline  hover:text-[var(--accent-color)] transition-colors">Features</Link>
-                        <Link href="/vision" className="text-[var(--text-color)] no-underline  hover:text-[var(--accent-color)] transition-colors">Our Vision</Link>
+                        <Link href="#features" className="text-[var(--text-color)] no-underline  hover:text-[var(--accent-color)] transition-colors">{headerT("navElement.features")}</Link>
+                        <Link href="/vision" className="text-[var(--text-color)] no-underline  hover:text-[var(--accent-color)] transition-colors">{headerT("navElement.our_vision")}</Link>
                         <Link href="https://github.com/prashantsingh2408/mentor-ai" target="_blank" className="text-[var(--text-color)] no-underline hover:text-[var(--accent-color)] transition-colors">
                             <FontAwesomeIcon icon={faGithub} className='mr-1' /> GitHub
                         </Link>
@@ -153,7 +152,7 @@ export const Header = () => {
                                 themeButtons.map((btn, index: number) => {
                                     return (
                                         <button
-                                        key={index}
+                                            key={index}
                                             className="theme-btn w-10 h-10 border-text rounded-full transition-all duration-200 hover:scale-110 flex items-center justify-center bg-[var(--bg-color)] border-2 shadow-md"
                                             // style="border-color: var(--text-color)"
                                             data-theme={btn.name.toLowerCase()}
@@ -170,7 +169,7 @@ export const Header = () => {
 
                         </div>
                         <Link href="/agents" className="px-4 py-2 no-underline bg-[var(--accent-color)] hover:bg-[var(--accent-dark)] text-white font-semibold rounded-lg transition duration-300">
-                            Start Learning
+                            {headerT("navElement.start_learning")}
                         </Link>
                         <LocalSelect />
 
@@ -199,7 +198,7 @@ export const Header = () => {
                             themeButtons.map((btn, index: number) => {
                                 return (
                                     <button
-                                    key={index}
+                                        key={index}
                                         className="theme-btn w-8 h-8 border-text rounded-full transition-all duration-200 hover:scale-110 flex items-center justify-center bg-[var(--bg-color)] border-2"
                                         // style="border-color: var(--text-color)"
                                         data-theme={btn.name.toLowerCase()}

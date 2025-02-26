@@ -1,50 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useEffect, useRef, useState } from "react";
-import "./agent.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartLine,
   faChevronLeft,
   faChevronRight,
   faCircle,
   faComments,
-  faFire,
   faGlobe,
   faGraduationCap,
-  faHistory,
   faLanguage,
-  faLightbulb,
   faMicrophone,
   faPaperclip,
   faPaperPlane,
-  faStar,
   faTasks,
-  faTimes,
   faUser,
-  faUserCircle,
+  faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import "./agent.css";
 import { AgenthHeader } from "./components/header";
 import { Pannel } from "./components/sugestionPannel";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 // user message format
-const UserMessage = ({ message }: { message: string }) => (
-  <div className="flex w-full justify-end items-start max-w-3xl ml-auto">
-    <div className="mr-3 bg-primary-100 rounded-lg p-4">
-      <p className="text-gray-800">
-        {message}
-      </p>
-    </div>
-    <div className="flex-shrink-0">
-      <div
-        className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center"
-      >
-        <FontAwesomeIcon icon={faUser} className="text-gray-600" />
-        {/* <User className="text-gray-600" /> */}
-      </div>
-    </div>
-  </div>
-)
+
 
 // bot message format
 const BotMessage = ({ message }: { message: string }) => (
@@ -78,7 +57,6 @@ export default function Agent() {
   const micButtonRef = useRef<HTMLButtonElement>(null);
   const speechUtterance = useRef<SpeechSynthesisUtterance | null>(null);
   const recognitionRef = useRef<any>(null);
-  const router = useRouter()
 
 
   // Clé API (attention : ne jamais exposer une clé en production)
@@ -209,7 +187,6 @@ Be friendly and helpful.`,
   // Gestion de la reconnaissance vocale et de la synthèse vocale
   // const [recognition, setRecognition] = useState<any>(null);
   const [isListening, setIsListening] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
 
   // Configuration de la synthèse vocale
   // const speechUtterance = useRef(new SpeechSynthesisUtterance());
@@ -304,7 +281,7 @@ Be friendly and helpful.`,
     console.log("Stopped listening");
   }
 
-  function handleMicClick(event: any) {
+  function handleMicClick(event: { preventDefault: () => void; }) {
     event.preventDefault();
     const micButton = micButtonRef.current;
     const micWaves = micButton?.parentElement?.querySelector(".mic-waves");
@@ -339,15 +316,15 @@ Be friendly and helpful.`,
     }
   }
 
-  async function handleSpeechResult(event: any) {
+  async function handleSpeechResult(event: { results: string | any[]; }) {
     const transcript = event.results[event.results.length - 1][0].transcript.trim();
     console.log("Speech recognized:", transcript);
     if (transcript) {
       setMessages((prev) => [...prev, { type: "user", content: transcript }]);
       if (chatMessagesRef.current) {
         chatMessagesRef.current.scrollTop =
-       chatMessagesRef.current.scrollHeight;
-     }
+          chatMessagesRef.current.scrollHeight;
+      }
       // displayMessage("user", transcript);
       if (transcript.toLowerCase() === "stop") {
         stopListening();
@@ -359,16 +336,16 @@ Be friendly and helpful.`,
         console.error("OpenAI API Error:", error);
         setMessages((prev) => [...prev, { type: "bot", content: "AI is currently unavailable. Please try again later." }]);
         if (chatMessagesRef.current) {
-           chatMessagesRef.current.scrollTop =
-          chatMessagesRef.current.scrollHeight;
+          chatMessagesRef.current.scrollTop =
+            chatMessagesRef.current.scrollHeight;
         }
-       
+
         // displayMessage("assistant", "⚠ AI is currently unavailable. Please try again later.");
       }
     }
   }
 
-  function handleSpeechError(event: any) {
+  function handleSpeechError(event: { error: unknown; }) {
     console.error("Speech recognition error:", event.error);
     stopListening();
   }
@@ -452,8 +429,8 @@ Be friendly and helpful.`,
       setMessages((prev) => [...prev, { type: "bot", content: "⚠ Error in AI response. Please try again." }]);
       if (chatMessagesRef.current) {
         chatMessagesRef.current.scrollTop =
-       chatMessagesRef.current.scrollHeight;
-     }
+          chatMessagesRef.current.scrollHeight;
+      }
     }
   }
 
@@ -468,7 +445,7 @@ Be friendly and helpful.`,
     speechUtterance.current.onerror = (event) => {
       console.error("Speech synthesis error:", event);
     };
-  
+
   }
 
   useEffect(() => {
@@ -515,7 +492,7 @@ Be friendly and helpful.`,
     return () => {
       micButton?.removeEventListener("click", handleMicClick);
     };
-  }, [isListening]);
+  }, []);
 
   return (
     <div className="h-screen flex flex-col bg-gray-50">
@@ -533,7 +510,7 @@ Be friendly and helpful.`,
               </div>
               <div className="ml-3 bg-gray-100 rounded-lg p-4">
                 <p className="text-gray-800">
-                  Welcome to Mentor Mind's Language Learning! I'm your AI Language Mentor, designed to provide personalized learning experiences. I can help you with:
+                  Welcome to Mentor Mind&apos;s Language Learning! I&apos;m your AI Language Mentor, designed to provide personalized learning experiences. I can help you with:
                 </p>
                 <ul className="mt-2 space-y-1 text-gray-700">
                   <li>• Interactive conversations in multiple languages</li>
@@ -552,7 +529,7 @@ Be friendly and helpful.`,
             <div className="flex items-start max-w-3xl ml-auto">
               <div className="mr-3 bg-primary-100 rounded-lg p-4">
                 <p className="text-gray-800">
-                  I'd like to practice travel-related phrases in French.
+                  I&apos;d like to practice travel-related phrases in French.
                 </p>
               </div>
               <div className="flex-shrink-0">
@@ -571,16 +548,16 @@ Be friendly and helpful.`,
               </div>
               <div className="ml-3 bg-gray-100 rounded-lg p-4">
                 <p className="text-gray-800">
-                  Perfect! Let's start with some essential travel phrases. I'll help you with both pronunciation and meaning. Try saying this:
+                  Perfect! Let&apos;s start with some essential travel phrases. I&apos;ll help you with both pronunciation and meaning. Try saying this:
                 </p>
                 <p className="mt-2 font-medium text-primary-600">
-                  "Excusez-moi, où est la gare?"
+                  Excusez-moi, où est la gare ?&quot;
                 </p>
                 <p className="mt-2 text-gray-600 italic">
                   (Excuse me, where is the train station?)
                 </p>
                 <p className="mt-2 text-gray-700">
-                  Click the microphone icon to practice pronouncing this phrase, and I'll give you feedback.
+                  Click the microphone icon to practice pronouncing this phrase, and I&apos;ll give you feedback.
                 </p>
               </div>
             </div>

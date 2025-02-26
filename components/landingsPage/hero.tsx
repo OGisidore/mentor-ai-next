@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { CustomIcon } from "../custumcon/icon"
 import { useScopedI18n } from "@/locales/client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlay } from "@fortawesome/free-solid-svg-icons"
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
 
 export const Hero = () => {
     const heroT = useScopedI18n("landngPage.hero")
@@ -21,7 +21,7 @@ export const Hero = () => {
                     <FontAwesomeIcon icon={faPlay} className="mr-2"/> {heroT("start_linkText")}
                 </Link>
                 <Link href="https://github.com/prashantsingh2408/mentor-ai" className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-[var(--accent-color)] font-semibold rounded-lg transition duration-300">
-                    <CustomIcon name="Github" size={24} className="mr-2"/> {heroT("github_linkText")}
+                <FontAwesomeIcon icon={faGithub} className="mr-2"/> {heroT("start_linkText")}
                 </Link>
             </div>
         </div>

@@ -1,10 +1,7 @@
 // import { Input, Spinner, Tooltip } from "@nextui-org/react";
 // import { Airplane, ArrowRight, PaperPlaneRight } from "@phosphor-icons/react";
-import clsx from "clsx";
-import { Input } from "../ui/input";
-import { Tooltip } from "../ui/tooltip";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface StreamingAvatarTextInputProps {
   label: string;
@@ -18,7 +15,6 @@ interface StreamingAvatarTextInputProps {
 }
 
 export default function InteractiveAvatarTextInput({
-  label,
   placeholder,
   input,
   onSubmit,
@@ -99,18 +95,18 @@ export default function InteractiveAvatarTextInput({
         {/* <Tooltip content="Send message"> */}
         {/* <Tooltip > */}
 
-          {loading ? (
-            <div className="">...</div>
-          ) : (
-            <button
-              type="submit"
-              className="focus:outline-none"
-              onClick={handleSubmit}
-              disabled={disabled}
-            >
-              <FontAwesomeIcon icon={faPaperPlane} />
-            </button>
-          )}
+        {loading ? (
+          <div className="">...</div>
+        ) : (
+          <button
+            type="submit"
+            className="focus:outline-none"
+            onClick={handleSubmit}
+            disabled={disabled}
+          >
+            <FontAwesomeIcon icon={faPaperPlane} />
+          </button>
+        )}
         {/* </Tooltip> */}
       </div>
     </div>

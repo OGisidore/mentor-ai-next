@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { streamFromOpenAI } from '@/lib/api-Ai';
 import { Mic } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
@@ -9,8 +11,8 @@ const SpeechChatbot = ({ messages, setMessages }: { messages: any, setMessages: 
   // const [messages, setMessages] = useState<any[]>([]);
 
   let recognition: any = null;
-  let speechSynthesisInstance = (window as any).speechSynthesis;
-  let speechUtterance = new SpeechSynthesisUtterance();
+  const speechSynthesisInstance = (window as any).speechSynthesis;
+  const speechUtterance = new SpeechSynthesisUtterance();
 
   useEffect(() => {
     initializeSpeechRecognition();

@@ -85,7 +85,7 @@ export const Pannel = ({showSuggestions, setShowSuggestions}:{showSuggestions : 
                     </div>
 
                     <div className="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-xl p-4">
-                        <h3 className="text-sm font-medium text-gray-800 mb-3">Today's Practice Activities</h3>
+                        <h3 className="text-sm font-medium text-gray-800 mb-3">Today&apos;s Practice Activities</h3>
                         <div className="space-y-2">
                             <div className="bg-white rounded-lg p-3 shadow-sm flex items-center gap-3 cursor-pointer hover:bg-gray-50">
                                 <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">

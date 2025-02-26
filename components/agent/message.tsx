@@ -1,4 +1,4 @@
-export default function Message({ role, content } : { role : any, content : string }) {
+export default function Message({ role, content } : { role : string, content : string }) {
     return (
       <div className={`flex items-start max-w-3xl ${role === 'user' ? 'ml-auto' : ''}`}>
         {role === 'user' ? (

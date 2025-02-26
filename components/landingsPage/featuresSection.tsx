@@ -1,7 +1,7 @@
 "use client"
 
 import { useScopedI18n } from "@/locales/client";
-import { faArrowRight, faBookReader, faBrain, faBriefcase, faBullseye, faChartLine, faCheck, faCheckCircle, faClipboardCheck, faComments, faDatabase, faGlobe, faGraduationCap, faHeartbeat, faLanguage, faLaptopCode, faMagic, faMicrophone, faMobileAlt, faPuzzlePiece, faRoute, faSchool, faSearch, faTasks, faTools, faUser, faUserCircle, faVideo } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBookReader, faBrain, faBriefcase, faCheck, faCheckCircle, faClipboardCheck, faComments, faDatabase, faGraduationCap, faHeartbeat, faLanguage, faLaptopCode, faMicrophone, faSchool, faSearch, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
@@ -13,261 +13,261 @@ import Link from "next/link";
 
 export const FeatureSection = () => {
     const t = useScopedI18n("landngPage.FeatureSection")
-      // On récupère les différents ensembles de données traduits
-//   const coreFeatures = t("coreFeatures");
-//   const keyCapabilities = t("keyCapabilities");
-//   const persistentMemory = t("persistentMemory");
-//   const mentors = t("mentors");
+    // On récupère les différents ensembles de données traduits
+    //   const coreFeatures = t("coreFeatures");
+    //   const keyCapabilities = t("keyCapabilities");
+    //   const persistentMemory = t("persistentMemory");
+    //   const mentors = t("mentors");
     // 
-const mentors = {
-    title: t("mentors.title"),
-    subTitle: t("mentors.subTitle"),
-    description: t("mentors.description"),
-    mentorsCards: [
-        {
-            icon: faLanguage,
-            title: t("mentors.mentorsCards.0.title"),
-            description:t("mentors.mentorsCards.0.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.0.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.0.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.0.lists.2.text")
-                },
+    const mentors = {
+        title: t("mentors.title"),
+        subTitle: t("mentors.subTitle"),
+        description: t("mentors.description"),
+        mentorsCards: [
+            {
+                icon: faLanguage,
+                title: t("mentors.mentorsCards.0.title"),
+                description: t("mentors.mentorsCards.0.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.0.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.0.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.0.lists.2.text")
+                    },
 
-            ],
-            type : t("mentors.mentorsCards.0.type"),
-
-
-
-        },
-        {
-            icon: faSchool,
-            title: t("mentors.mentorsCards.1.title"),
-            description:t("mentors.mentorsCards.1.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.1.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.1.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.1.lists.2.text")
-                },
-
-            ],
-            type : t("mentors.mentorsCards.1.type"),
+                ],
+                type: t("mentors.mentorsCards.0.type"),
 
 
 
-        },
-        {
-            icon: faBriefcase,
-            title: t("mentors.mentorsCards.2.title"),
-            description:t("mentors.mentorsCards.2.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.2.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.2.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.2.lists.2.text")
-                },
+            },
+            {
+                icon: faSchool,
+                title: t("mentors.mentorsCards.1.title"),
+                description: t("mentors.mentorsCards.1.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.1.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.1.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.1.lists.2.text")
+                    },
 
-            ],
-            type : t("mentors.mentorsCards.2.type"),
-
-
-        },
-        {
-            icon: faBookReader,
-            title: t("mentors.mentorsCards.3.title"),
-            description:t("mentors.mentorsCards.3.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.3.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.3.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.3.lists.2.text")
-                },
-
-            ],
-            type : t("mentors.mentorsCards.3.type"),
-
-
-        },
-        {
-            icon: faGraduationCap,
-            title: t("mentors.mentorsCards.4.title"),
-            description:t("mentors.mentorsCards.4.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.4.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.4.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.4.lists.2.text")
-                },
-
-            ],
-            type : t("mentors.mentorsCards.4.type"),
+                ],
+                type: t("mentors.mentorsCards.1.type"),
 
 
 
-        },
-        {
-            icon: faClipboardCheck,
-            title: t("mentors.mentorsCards.5.title"),
-            description:t("mentors.mentorsCards.5.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.5.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.5.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.5.lists.2.text")
-                },
+            },
+            {
+                icon: faBriefcase,
+                title: t("mentors.mentorsCards.2.title"),
+                description: t("mentors.mentorsCards.2.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.2.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.2.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.2.lists.2.text")
+                    },
 
-            ],
-            type : t("mentors.mentorsCards.5.type"),
-
-
-
-        },
-        {
-            icon: faHeartbeat,
-            title: t("mentors.mentorsCards.6.title"),
-            description:t("mentors.mentorsCards.6.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.6.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.6.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.6.lists.2.text")
-                },
-
-            ],
-            type : t("mentors.mentorsCards.6.type"),
+                ],
+                type: t("mentors.mentorsCards.2.type"),
 
 
-        },
-        {
-            icon: faLaptopCode,
-            title: t("mentors.mentorsCards.7.title"),
-            description:t("mentors.mentorsCards.7.description"),
-            lists: [
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.7.lists.0.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.7.lists.1.text")
-                },
-                {
-                    icon: faCheck,
-                    text: t("mentors.mentorsCards.7.lists.2.text")
-                },
+            },
+            {
+                icon: faBookReader,
+                title: t("mentors.mentorsCards.3.title"),
+                description: t("mentors.mentorsCards.3.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.3.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.3.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.3.lists.2.text")
+                    },
 
-            ],
-            type : t("mentors.mentorsCards.7.type"),
+                ],
+                type: t("mentors.mentorsCards.3.type"),
+
+
+            },
+            {
+                icon: faGraduationCap,
+                title: t("mentors.mentorsCards.4.title"),
+                description: t("mentors.mentorsCards.4.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.4.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.4.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.4.lists.2.text")
+                    },
+
+                ],
+                type: t("mentors.mentorsCards.4.type"),
 
 
 
-        },
-    ],
-    action: {
-        icon: faArrowRight,
-        text: t("mentors.action.text")
+            },
+            {
+                icon: faClipboardCheck,
+                title: t("mentors.mentorsCards.5.title"),
+                description: t("mentors.mentorsCards.5.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.5.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.5.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.5.lists.2.text")
+                    },
+
+                ],
+                type: t("mentors.mentorsCards.5.type"),
+
+
+
+            },
+            {
+                icon: faHeartbeat,
+                title: t("mentors.mentorsCards.6.title"),
+                description: t("mentors.mentorsCards.6.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.6.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.6.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.6.lists.2.text")
+                    },
+
+                ],
+                type: t("mentors.mentorsCards.6.type"),
+
+
+            },
+            {
+                icon: faLaptopCode,
+                title: t("mentors.mentorsCards.7.title"),
+                description: t("mentors.mentorsCards.7.description"),
+                lists: [
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.7.lists.0.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.7.lists.1.text")
+                    },
+                    {
+                        icon: faCheck,
+                        text: t("mentors.mentorsCards.7.lists.2.text")
+                    },
+
+                ],
+                type: t("mentors.mentorsCards.7.type"),
+
+
+
+            },
+        ],
+        action: {
+            icon: faArrowRight,
+            text: t("mentors.action.text")
+        }
     }
-}
 
-// 
-const keyCapabilities = {
-    title: t("keyCapabilities.title"),
-    // description: "Enhance your learning experience with these powerful features",
-    capabilities: [
-        {
-            icon: faCheckCircle,
-            title: t("keyCapabilities.capabilities.0.title"),
-            description:t("keyCapabilities.capabilities.0.description"),
+    // 
+    const keyCapabilities = {
+        title: t("keyCapabilities.title"),
+        // description: "Enhance your learning experience with these powerful features",
+        capabilities: [
+            {
+                icon: faCheckCircle,
+                title: t("keyCapabilities.capabilities.0.title"),
+                description: t("keyCapabilities.capabilities.0.description"),
 
-        },
-        {
-            icon: faBrain,
-            title: t("keyCapabilities.capabilities.1.title"),
-            description:t("keyCapabilities.capabilities.1.description"),
+            },
+            {
+                icon: faBrain,
+                title: t("keyCapabilities.capabilities.1.title"),
+                description: t("keyCapabilities.capabilities.1.description"),
 
-        },
-        {
-            icon: faSearch,
-            title: t("keyCapabilities.capabilities.2.title"),
-            description:t("keyCapabilities.capabilities.2.description"),
+            },
+            {
+                icon: faSearch,
+                title: t("keyCapabilities.capabilities.2.title"),
+                description: t("keyCapabilities.capabilities.2.description"),
 
-        },
-    ],
+            },
+        ],
 
-};
-// 
-const coreFeatures = {
-    title: t("coreFeatures.title"),
-    description: t("coreFeatures.description"),
-    features: [
-        {
-            icon: faComments,
-            title: t("coreFeatures.features.0.title"),
-            description: t("coreFeatures.features.0.description"),
-        },
-        {
-            icon: faMicrophone,
-            title: t("coreFeatures.features.1.title"),
-            description: t("coreFeatures.features.1.description"),
-        },
-        {
-            icon: faUserCircle,
-            title: t("coreFeatures.features.2.title"),
-            description: t("coreFeatures.features.2.description"),
-        },
-    ],
-};
+    };
+    // 
+    const coreFeatures = {
+        title: t("coreFeatures.title"),
+        description: t("coreFeatures.description"),
+        features: [
+            {
+                icon: faComments,
+                title: t("coreFeatures.features.0.title"),
+                description: t("coreFeatures.features.0.description"),
+            },
+            {
+                icon: faMicrophone,
+                title: t("coreFeatures.features.1.title"),
+                description: t("coreFeatures.features.1.description"),
+            },
+            {
+                icon: faUserCircle,
+                title: t("coreFeatures.features.2.title"),
+                description: t("coreFeatures.features.2.description"),
+            },
+        ],
+    };
     return (
         <section id="features" className="py-12 sm:py-16 bg-[var(--bg-color)] px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
@@ -279,7 +279,7 @@ const coreFeatures = {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                     {
-                        coreFeatures.features.map((feat: any, index: number) => {
+                        coreFeatures.features.map((feat, index: number) => {
                             return (
                                 <div key={index} className="feature-card bg-[var(--bg-color)] p-6 rounded-lg shadow-md border border-[var(--border-color)]">
                                     <h3 className="text-xl font-semibold text-[var(--text-color)] mb-3">
@@ -303,7 +303,7 @@ const coreFeatures = {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {
-                            keyCapabilities.capabilities.map((cap: any, index: number) => {
+                            keyCapabilities.capabilities.map((cap, index: number) => {
                                 return (
                                     <div key={index} className="bg-[var(--bg-color)] p-6 rounded-lg shadow-md border border-[var(--border-color)]">
                                         <h3 className="text-xl font-semibold text-[var(--text-color)] mb-3">
@@ -323,12 +323,12 @@ const coreFeatures = {
                 {/* <!-- Persistent Memory --> */}
                 <div className="bg-[var(--bg-color)] mt-4 p-6 rounded-lg shadow-md border border-[var(--border-color)]">
                     <h3 className="text-xl font-semibold text-[var(--text-color)] mb-3">
-                        <FontAwesomeIcon icon={faDatabase} className="mr-2 text-[var(--accent-color)]"/>
+                        <FontAwesomeIcon icon={faDatabase} className="mr-2 text-[var(--accent-color)]" />
                         {/* <i className="fas fa-database mr-2 text-[var(--accent-color)]"></i> */}
                         {t("persistentMemory.title")}
                     </h3>
                     <p className="text-[var(--text-color)] opacity-80">
-                    {t("persistentMemory.description")}
+                        {t("persistentMemory.description")}
                     </p>
                 </div>
 
@@ -363,7 +363,7 @@ const coreFeatures = {
                                                 })
                                             }
                                         </ul>
-                                        <Link href={"/mentor?type="+ mentor.type} className="inline-flex no-underline items-center text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> {mentors.action.text} <FontAwesomeIcon icon={mentors.action.icon} className="ml-2 " />  </Link>
+                                        <Link href={"/mentor?type=" + mentor.type} className="inline-flex no-underline items-center text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> {mentors.action.text} <FontAwesomeIcon icon={mentors.action.icon} className="ml-2 " />  </Link>
                                         {/* <a href="#"
                                             onClick="openMentor('language')"
                                             class="inline-flex items-center text-[var(--accent-color)] hover:text-[var(--accent-dark)]">
@@ -373,7 +373,7 @@ const coreFeatures = {
                                 )
                             })
                         }
-                        
+
                     </div>
                 </div>
             </div>
