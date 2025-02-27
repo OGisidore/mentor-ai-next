@@ -201,15 +201,15 @@ export default function InteractiveAvatar() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (stream && mediaStream.current) {
-  //     mediaStream.current.srcObject = stream;
-  //     mediaStream.current.onloadedmetadata = () => {
-  //       mediaStream.current!.play();
-  //       setDebug("Playing");
-  //     };
-  //   }
-  // }, [mediaStream, stream]);
+  useEffect(() => {
+    if (stream && mediaStream.current) {
+      mediaStream.current.srcObject = stream;
+      mediaStream.current.onloadedmetadata = () => {
+        mediaStream.current!.play();
+        setDebug("Playing");
+      };
+    }
+  }, [mediaStream, stream]);
 
   useEffect(() => {
     const currentMessage = msgs[msgs.length - 1]
@@ -390,6 +390,12 @@ export default function InteractiveAvatar() {
                 setInput={setText}
                 onSubmit={handleSpeak}
               />
+               <div className="flex flex-col items-center gap-4">
+            <BroadcastButton 
+              isSessionActive={isSessionActive} 
+              onClick={handleStartStopClick}
+            />
+          </div>
               {text && (
                 // <Chip className="absolute right-16 top-3">Listening</Chip>
                 <div className="absolute right-16 top-3">Listening</div>
@@ -397,12 +403,7 @@ export default function InteractiveAvatar() {
             </div>
           ) : (
             <div className="w-full text-center">
-              <div className="flex flex-col items-center gap-4">
-            <BroadcastButton 
-              isSessionActive={isSessionActive} 
-              onClick={handleStartStopClick}
-            />
-          </div>
+             
               <Button
                 disabled={!isUserTalking}
                 className="bg-gradient-to-tr from-indigo-500 to-indigo-300 text-white"
