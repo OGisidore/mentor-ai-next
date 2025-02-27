@@ -19,17 +19,21 @@ import StreamingAvatar, {
 //   Tabs,
 //   Tab,
 // } from "@nextui-org/react";
-import { useEffect, useRef, useState } from "react";
 import { useMemoizedFn, usePrevious } from "ahooks";
+import { useEffect, useRef, useState } from "react";
 
 import InteractiveAvatarTextInput from "./InteractiveAvatarTextInput";
 
+import { AVATARS, STT_LANGUAGE_LIST } from "@/lib/constants";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
+import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem } from "../ui/select";
 import { Tabs } from "../ui/tabs";
-import { Input } from "../ui/input";
-import { AVATARS, STT_LANGUAGE_LIST } from "@/lib/constants";
+import { BroadcastButton } from "../broadcast-button";
+import useWebRTCAudioSession from "@/hooks/use-webrtc";
+import { tools } from "@/lib/tools";
+// import { useToolsFunctions } from "@/hooks/use-tools";
 
 export default function InteractiveAvatar() {
   const [isLoadingSession, setIsLoadingSession] = useState(false);
@@ -46,7 +50,22 @@ export default function InteractiveAvatar() {
   const avatar = useRef<StreamingAvatar | null>(null);
   const [chatMode, setChatMode] = useState("text_mode");
   const [isUserTalking, setIsUserTalking] = useState(false);
+  // const [voice, setVoice] = useState("ash")
+  const voice = "ash"
 
+  // WebRTC Audio Session Hook
+  const {
+    // status,
+    isSessionActive,
+    // registerFunction,
+    handleStartStopClick,
+    msgs,
+    // conversation,
+    // sendTextMessage
+  } = useWebRTCAudioSession(voice, tools)
+
+  // Get all tools functions
+  // const toolsFunctions = useToolsFunctions();
   async function fetchAccessToken() {
     try {
       const response = await fetch("/api/get-access-token", {
@@ -54,7 +73,6 @@ export default function InteractiveAvatar() {
       });
       const token = await response.text();
 
-      console.log("Access Token:", token); // Log the token to verify
 
       return token;
     } catch (error) {
@@ -114,7 +132,7 @@ export default function InteractiveAvatar() {
 
       setData(res);
       console.log(data);
-      
+
       // default to voice mode
       await avatar.current?.startVoiceChat({
         useSilencePrompt: false
@@ -183,16 +201,27 @@ export default function InteractiveAvatar() {
     };
   }, []);
 
-  useEffect(() => {
-    if (stream && mediaStream.current) {
-      mediaStream.current.srcObject = stream;
-      mediaStream.current.onloadedmetadata = () => {
-        mediaStream.current!.play();
-        setDebug("Playing");
-      };
-    }
-  }, [mediaStream, stream]);
+  // useEffect(() => {
+  //   if (stream && mediaStream.current) {
+  //     mediaStream.current.srcObject = stream;
+  //     mediaStream.current.onloadedmetadata = () => {
+  //       mediaStream.current!.play();
+  //       setDebug("Playing");
+  //     };
+  //   }
+  // }, [mediaStream, stream]);
 
+  useEffect(() => {
+    const currentMessage = msgs[msgs.length - 1]
+    if (currentMessage?.type === "response.audio_transcript.done") {
+      setText(currentMessage.trancript)
+      handleSpeak()
+
+      
+    }
+  console.log(msgs);
+  
+  }, [msgs])
   return (
     <div className="w-full flex flex-col gap-4">
       <Card>
@@ -226,7 +255,7 @@ export default function InteractiveAvatar() {
                   // size="md"
                   size="sm"
                   variant="default"
-                   onClick={endSession}
+                  onClick={endSession}
                 >
                   End session
                 </Button>
@@ -246,6 +275,34 @@ export default function InteractiveAvatar() {
                 <p className="text-sm font-medium leading-none">
                   Custom Avatar ID (optional)
                 </p>
+                <select value={avatarId} onChange={(e) => setAvatarId(e.target.value)} className="
+                          flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="" id="">
+                  {AVATARS.map((avatar) => (
+                    <option
+                      value={avatar.avatar_id}
+                      key={avatar.avatar_id}
+                    // textValue={avatar.avatar_id}
+                    >
+                      {avatar.name}
+                    </option>
+                  ))}
+                </select>
+                {/* <Select value={avatarId}>
+                  <SelectLabel>Entrer ici avatar</SelectLabel>
+                  <SelectContent onChange={(e) => setAvatarId((e.currentTarget as HTMLInputElement).value)}>
+                    {AVATARS.map((avatar) => (
+                      <SelectItem
+                        value={avatar.avatar_id}
+                        key={avatar.avatar_id}
+                      // textValue={avatar.avatar_id}
+                      >
+                        {avatar.name}
+                      </SelectItem>
+                    ))}
+
+                  </SelectContent>
+                </Select> */}
                 <Input
                   placeholder="Enter a custom avatar ID"
                   value={avatarId}
@@ -254,49 +311,49 @@ export default function InteractiveAvatar() {
                 <Select
                   // placeholder="Or select one from these example avatars"
                   // size="md"
-                  onValueChange={(e : any ) => {
+                  onValueChange={(e: any) => {
                     setAvatarId(e.target.value);
                   }}
-                  // onChang/e={}
+                // onChang/e={}
                 >
                   <SelectContent>
-                  {AVATARS.map((avatar) => (
-                    <SelectItem
-                    value={avatar.avatar_id}
-                      key={avatar.avatar_id}
+                    {AVATARS.map((avatar) => (
+                      <SelectItem
+                        value={avatar.avatar_id}
+                        key={avatar.avatar_id}
                       // textValue={avatar.avatar_id}
-                    >
-                      {avatar.name}
-                    </SelectItem>
-                  ))}
+                      >
+                        {avatar.name}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
-                  
+
                 </Select>
                 <Select
                   // label="Select language"
                   // placeholder="Select language"
                   // className="max-w-xs"
                   defaultValue={language}
-                  onValueChange={(e : any) => {
+                  onValueChange={(e: any) => {
                     setLanguage(e.target.value);
                   }}
-                  // selectedKeys={[language]}
-                  // onChange={}
+                // selectedKeys={[language]}
+                // onChange={}
                 >
                   <SelectContent>
-                     {STT_LANGUAGE_LIST.map((lang) => (
-                    <SelectItem value={lang.value} key={lang.key}>
-                      {lang.label}
-                    </SelectItem>
-                  ))}
+                    {STT_LANGUAGE_LIST.map((lang) => (
+                      <SelectItem value={lang.value} key={lang.key}>
+                        {lang.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
-                 
+
                 </Select>
               </div>
               <Button
                 className="bg-gradient-to-tr from-indigo-500 to-indigo-300 w-full text-white"
                 size="sm"
-                  variant="default"
+                variant="default"
                 onClick={startSession}
               >
                 Start session
@@ -315,9 +372,9 @@ export default function InteractiveAvatar() {
             onChange={(v) => {
               handleChangeChatMode(v);
             }}
-            // selectedKey={chatMode}
+          // selectedKey={chatMode}
 
-            // onSelectionChange={}
+          // onSelectionChange={}
           >
             <Tabs key="text_mode" title="Text mode" />
             <Tabs key="voice_mode" title="Voice mode" />
@@ -340,6 +397,12 @@ export default function InteractiveAvatar() {
             </div>
           ) : (
             <div className="w-full text-center">
+              <div className="flex flex-col items-center gap-4">
+            <BroadcastButton 
+              isSessionActive={isSessionActive} 
+              onClick={handleStartStopClick}
+            />
+          </div>
               <Button
                 disabled={!isUserTalking}
                 className="bg-gradient-to-tr from-indigo-500 to-indigo-300 text-white"
