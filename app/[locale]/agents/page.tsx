@@ -17,7 +17,6 @@ import {
   faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import "./agent.css";
 import { AgenthHeader } from "./components/header";
@@ -59,21 +58,21 @@ export default function Agent() {
   const messageInputRef = useRef<HTMLInputElement>(null);
   const sendButtonRef = useRef<HTMLButtonElement>(null);
   const micButtonRef = useRef<HTMLButtonElement>(null);
-  const [ closeSession, setCloseSession] = useState(false)
-  const { handleStartStopClick, isSessionActive, conversation, msgs } = useWebRTCAudioSession('alloy');
+  // const [ closeSession, setCloseSession] = useState(false)
+  const { handleStartStopClick, isSessionActive, conversation, handleStartChat } = useWebRTCAudioSession('alloy');
 
 
 
   // Clé API (attention : ne jamais exposer une clé en production)
   const API_KEY = "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"; // Clé tronquée pour l'exemple
  
-  const stopListening = ()=>{
-    if (mode === "avatar") {
-      setCloseSession(true)
+  // const stopListening = ()=>{
+  //   if (mode === "avatar") {
+  //     setCloseSession(true)
       
-    }
-    handleStartStopClick
-  }
+  //   }
+  //   handleStartStopClick
+  // }
 
   // Classe d'intégration du chat (utilisant les refs)
   class ChatIntegration {
@@ -193,6 +192,15 @@ Be friendly and helpful.`,
 
 
   }, []);
+  const switchMode = ()=>{
+    if (mode === "avatar") {
+      setMode("chat")
+      handleStartChat(true)
+    } else{
+      setMode("avatar")
+      handleStartChat(false)
+    }  
+  }
   
   return (
     <div className="h-screen flex flex-col bg-gray-50">
@@ -242,7 +250,7 @@ Be friendly and helpful.`,
                   className="w-full border border-gray-300 rounded-2xl px-4 py-3 pr-32 focus:outline-none focus:border-gray-400 focus:ring-0"
                   ref={messageInputRef}
                 />
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                <div className="md:absolute right-2 top-1/2  -translate-y-1/2 flex items-center gap-2">
                   <button className="p-2 text-gray-400 hover:text-gray-600">
                     <FontAwesomeIcon icon={faPaperclip} />
                   </button>
@@ -265,7 +273,7 @@ Be friendly and helpful.`,
                   </div>
                   <button
                     type="button"
-                    onClick={()=> setMode("avatar")}
+                    onClick={switchMode}
                     className="p-2 text-gray-400 hover:text-gray-600"
                   >
                     <FontAwesomeIcon icon={faUserCircle} />

@@ -12,7 +12,7 @@ export const AgenthHeader = ({ setShowSuggestions }: { setShowSuggestions: () =>
                 <div className="flex items-center">
                     <FontAwesomeIcon icon={faLanguage} className='text-primary-600 text-2xl sm:text-4xl mr-2' />
                     {/* <i className="fas fa-language text-primary-600 text-2xl sm:text-4xl mr-2"></i> */}
-                    <Link href={"/"} className="text-lg no-underline  sm:text-2xl font-bold text-gray-800">Language Mentor AI</Link>
+                    {/* <Link href={"/"} className="text-lg no-underline  sm:text-2xl font-bold text-gray-800"> Mentor AI</Link> */}
                 </div>
                 <div className="flex items-center gap-3">
                     <LocalSelect />

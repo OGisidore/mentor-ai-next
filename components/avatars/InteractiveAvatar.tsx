@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { StartAvatarResponse } from "@heygen/streaming-avatar";
+// import type { StartAvatarResponse } from "@heygen/streaming-avatar";
 
 import StreamingAvatar, {
   AvatarQuality,
@@ -19,13 +19,13 @@ import StreamingAvatar, {
 //   Tabs,
 //   Tab,
 // } from "@nextui-org/react";
-import { useMemoizedFn, usePrevious } from "ahooks";
+import {  usePrevious } from "ahooks";
 import { useEffect, useRef, useState } from "react";
 
 
-import { AVATARS, STT_LANGUAGE_LIST } from "@/lib/constants";
+import { AVATARS } from "@/lib/constants";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardFooter } from "../ui/card";
+import { Card, CardContent } from "../ui/card";
 import { Conversation } from "@/lib/conversations";
 // import { useToolsFunctions } from "@/hooks/use-tools";
 interface AvatarProps {
@@ -34,19 +34,21 @@ interface AvatarProps {
 }
 export default function InteractiveAvatar({closeSession , conversation}:AvatarProps) {
   const [isLoadingSession, setIsLoadingSession] = useState(false);
-  const [isLoadingRepeat, setIsLoadingRepeat] = useState(false);
+  // const [ setIsLoadingRepeat] = useState(false);
   const [stream, setStream] = useState<MediaStream>();
-  const [debug, setDebug] = useState<string>();
-  const [knowledgeId, setKnowledgeId] = useState<string>("");
+  // const [debug, setDebug] = useState<string>();
+  // const [knowledgeId, setKnowledgeId] = useState<string>("");
   const [avatarId, setAvatarId] = useState<string>(AVATARS[0].avatar_id);
-  const [language, setLanguage] = useState<string>('fr');
+  // const [language, setLanguage] = useState<string>('fr');
 
-  const [data, setData] = useState<StartAvatarResponse>();
+  // const [data, setData] = useState<StartAvatarResponse>();
   const [text, setText] = useState<string>("salut comment puis-je t'aider ?");
   const mediaStream = useRef<HTMLVideoElement>(null);
   const avatar = useRef<StreamingAvatar | null>(null);
-  const [chatMode, setChatMode] = useState("text_mode");
-  const [isUserTalking, setIsUserTalking] = useState(false);
+  // const [chatMode, setChatMode] = useState("text_mode");
+  // const [isUserTalking, setIsUserTalking] = useState(false);
+  const spokenTextsRef = useRef(new Set());
+
   // const [voice, setVoice] = useState("ash")
  
 
@@ -91,17 +93,17 @@ export default function InteractiveAvatar({closeSession , conversation}:AvatarPr
     });
     avatar.current?.on(StreamingEvents.USER_START, (event) => {
       console.log(">>>>> User started talking:", event);
-      setIsUserTalking(true);
+      // setIsUserTalking(true);
     });
     avatar.current?.on(StreamingEvents.USER_STOP, (event) => {
       console.log(">>>>> User stopped talking:", event);
-      setIsUserTalking(false);
+      // setIsUserTalking(false);
     });
     try {
-      const res = await avatar.current.createStartAvatar({
+       await avatar.current.createStartAvatar({
         quality: AvatarQuality.Low,
         avatarName: avatarId,
-        knowledgeId: knowledgeId, // Or use a custom `knowledgeBase`.
+        knowledgeId: "", // knowledgeId, // Or use a custom `knowledgeBase`.
         voice: {
           rate: 1.5, // 0.5 ~ 1.5
           emotion: VoiceEmotion.EXCITED,
@@ -112,27 +114,26 @@ export default function InteractiveAvatar({closeSession , conversation}:AvatarPr
           //   use_speaker_boost: false,
           // },
         },
-        language: language,
+        language: "fr", //language,
         disableIdleTimeout: true,
       });
 
-      setData(res);
-      console.log(data);
+      // setData(res);
+      // console.log(data);
 
       // default to voice mode
-      setText("Hello how can i help you today ?")
-      handleSpeak()
-      setChatMode("text_mode");
+      handleSpeak("Hello how can i help you today ?")
+      // setChatMode("text_mode");
     } catch (error) {
       console.error("Error starting avatar session:", error);
     } finally {
       setIsLoadingSession(false);
     }
   }
-  async function handleSpeak() {
-    setIsLoadingRepeat(true);
+  async function handleSpeak(text: string) {
+    // setIsLoadingRepeat(true);
     if (!avatar.current) {
-      setDebug("Avatar API not initialized");
+      // setDebug("Avatar API not initialized");
 
       return;
     }
@@ -140,10 +141,12 @@ export default function InteractiveAvatar({closeSession , conversation}:AvatarPr
 
     // speak({ text: text, task_type: TaskType.REPEAT })
     await avatar.current.speak({ text: text, taskType: TaskType.REPEAT, taskMode: TaskMode.SYNC }).catch((e) => {
-      setDebug(e.message);
+      console.log(e.message);
+      
+      // setDebug(e.message);
     });
     setText("")
-    setIsLoadingRepeat(false);
+    // setIsLoadingRepeat(false);
   }
   // async function handleInterrupt() {
   //   if (!avatar.current) {
@@ -183,7 +186,7 @@ export default function InteractiveAvatar({closeSession , conversation}:AvatarPr
       mediaStream.current.srcObject = stream;
       mediaStream.current.onloadedmetadata = () => {
         mediaStream.current!.play();
-        setDebug("Playing");
+        // setDebug("Playing");
       };
     }
   }, [mediaStream, stream]);
@@ -194,29 +197,29 @@ export default function InteractiveAvatar({closeSession , conversation}:AvatarPr
   },[closeSession])
 
   useEffect(() => {
-    let textToSpeak;
-    conversation.forEach((message) => {
-      if (message.role === "assistant") {
-        textToSpeak = message.text ? message.text : "Contactez isidore pourqu'il vous donne la cle API"
-
-        setText(textToSpeak)
-
-      } else {
-        setText("Contactez isidore pourqu'il vous donne la cle API")
-      }
-    })
-    console.log("text", text);
-
-    handleSpeak()
-
-
-  }, [conversation])
+    const lastMessage = [...conversation].reverse().find(
+      (message) => message.role === "assistant" && message.isFinal
+    );
+  
+    if (!lastMessage) return;
+  
+    const textToSpeak = lastMessage.text || "Contactez Isidore pour qu'il vous donne la clé API";
+  
+    // Vérifier si déjà parlé
+    if (!spokenTextsRef.current.has(textToSpeak)) {
+      handleSpeak(textToSpeak);
+      spokenTextsRef.current.add(textToSpeak); // Ajouter à l'historique
+    }
+  
+    console.log("text", textToSpeak);
+    console.log("conversation", conversation);
+  }, [conversation]);
   return (
     <div className="w-full flex flex-col gap-4">
       <Card>
         <CardContent className="h-[500px] flex flex-col justify-center items-center">
           {stream ? (
-            <div className="h-[500px] w-[90vw] md:w-[900px] justify-center items-center flex rounded-lg overflow-hidden">
+            <div className="h-[60vh] w-[90vw] md:w-[900px] justify-center items-center flex rounded-lg overflow-hidden">
               <video
                 ref={mediaStream}
                 autoPlay

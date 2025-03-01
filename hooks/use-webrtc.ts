@@ -28,6 +28,7 @@ interface UseWebRTCAudioSessionReturn {
   currentVolume: number;
   conversation: Conversation[];
   sendTextMessage: (text: string) => void;
+  handleStartChat : (value :boolean)=>void
 }
 
 /**
@@ -41,7 +42,10 @@ export default function useWebRTCAudioSession(
   // Connection/session states
   const [status, setStatus] = useState("");
   const [isSessionActive, setIsSessionActive] = useState(false);
-
+  const [ischatsession, setIsChatSession] = useState(true);
+  const handleStartChat = (value: boolean) => {
+    setIsChatSession(value); // ✅ On passe bien un booléen
+  };
   // Audio references for local mic
   // Approach A: explicitly typed as HTMLDivElement | null
   const audioIndicatorRef = useRef<HTMLDivElement | null>(null);
@@ -54,7 +58,7 @@ export default function useWebRTCAudioSession(
 
   // Keep track of all raw events/messages
   const [msgs, setMsgs] = useState<any[]>([]);
-  console.log(msgs);
+  // console.log(msgs);
 
   // Main conversation state
   const [conversation, setConversation] = useState<Conversation[]>([]);
@@ -97,7 +101,7 @@ export default function useWebRTCAudioSession(
     };
     dataChannel.send(JSON.stringify(sessionUpdate));
 
-    console.log("Session update sent:", sessionUpdate);
+    // console.log("Session update sent:", sessionUpdate);
     // console.log("Setting locale: " + t("language") + " : " + locale);
 
     // Send language preference message
@@ -398,14 +402,17 @@ export default function useWebRTCAudioSession(
       setStatus("Establishing connection...");
       const pc = new RTCPeerConnection();
       peerConnectionRef.current = pc;
+        // Hidden <audio> element for inbound assistant TTS
+        const audioEl = document.createElement("audio");
+        audioEl.autoplay = true;
+      
 
-      // Hidden <audio> element for inbound assistant TTS
-      const audioEl = document.createElement("audio");
-      audioEl.autoplay = true;
+
 
       // Inbound track => assistant's TTS
       pc.ontrack = (event) => {
-        audioEl.srcObject = event.streams[0];
+        ischatsession ? audioEl.srcObject = event.streams[0] : null
+        // 
 
         // Optional: measure inbound volume
         const audioCtx = new (window.AudioContext || window.AudioContext)();
@@ -576,5 +583,6 @@ export default function useWebRTCAudioSession(
     currentVolume,
     conversation,
     sendTextMessage,
+    handleStartChat,
   };
 }

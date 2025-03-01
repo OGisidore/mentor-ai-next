@@ -1,7 +1,7 @@
 export const AVATARS = [
   
   {
-    avatar_id: "Shawn_Therapist_public",
+    avatar_id: "Bryan_IT_Sitting_public",
     name: "Isidore",
   },
  
